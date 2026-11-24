@@ -1,0 +1,12 @@
+node_modules/
+static/panel/build/
+dist/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+BRIEF.md
+BUILD_LOG.md
+SUBMIT_CHECKLIST.md
+assets/raw/
