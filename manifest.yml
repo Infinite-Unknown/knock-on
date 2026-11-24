@@ -11,7 +11,8 @@ modules:
   rovo:agent:
     - key: knock-on-agent
       name: Knock-On
-      description: Forecasts what breaks downstream when a Jira issue slips, and finds dependencies whose dates already contradict each other.
+      description: Forecasts what breaks downstream when a Jira issue slips, and finds
+        dependencies whose dates already contradict each other.
       prompt: resource:agent-prompt;prompt.md
       conversationStarters:
         - What breaks if this issue slips a week?
@@ -26,7 +27,8 @@ modules:
       name: Forecast slip impact
       function: forecast-action
       actionVerb: GET
-      description: Forecast which downstream Jira issues, due dates, releases and people are affected if a Jira issue slips by a number of business days.
+      description: Forecast which downstream Jira issues, due dates, releases and
+        people are affected if a Jira issue slips by a number of business days.
       inputs:
         issueKey:
           title: Issue key
@@ -37,12 +39,15 @@ modules:
           title: Slip in business days
           type: integer
           required: true
-          description: How many business days (Monday to Friday) the issue may slip. 5 is one week.
+          description: How many business days (Monday to Friday) the issue may slip. 5 is
+            one week.
     - key: find-schedule-conflicts
       name: Find schedule conflicts
       function: conflicts-action
       actionVerb: GET
-      description: Scan a Jira project for dependencies whose dates already conflict - blockers due too late for the work they block, or children due after their parent.
+      description: Scan a Jira project for dependencies whose dates already conflict -
+        blockers due too late for the work they block, or children due after
+        their parent.
       inputs:
         projectKey:
           title: Project key
@@ -77,6 +82,6 @@ permissions:
     - write:jira-work
 
 app:
-  id: ari:cloud:ecosystem::app/00000000-0000-0000-0000-000000000000
+  id: ari:cloud:ecosystem::app/a6f42b84-8870-4794-bcc4-f31a62764990
   runtime:
     name: nodejs22.x
