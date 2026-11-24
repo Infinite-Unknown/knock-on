@@ -44,7 +44,7 @@ npm run preview     # local preview at http://localhost:5178
 
 `npm run preview` serves the panel with the real handlers running against an in-memory Jira holding a sample "Checkout 2.0" project. Try `?issue=CHK-12` (the main chain), `?issue=CHK-21`, `?issue=CHK-30` (nothing depends on it), `?issue=CHK-11` (done). The page also has a runner for the two Rovo action / MCP tool functions and shows the comments the in-memory Jira received. Dates are relative to today, so the sample never goes stale.
 
-`npm run demo` (with the preview running) records `assets/demo.mp4`; `node scripts/record-jira-demo.mjs` builds `assets/demo-jira.mp4` from Jira screenshots in `assets/raw/jira/`. Both need macOS `say` and `ffmpeg`.
+Demo video (`assets/demo-jira.mp4`): `node scripts/capture-preview.mjs` (with the preview running) captures the slider drag frame by frame, with CSS animations slowed through the DevTools protocol so the ripple is caught at every step; `node scripts/record-jira-demo.mjs` then renders the video at 1920x1080, 60 fps from those frames and full-resolution captures of the app in Jira (`assets/raw/jira-live/`), with an eased zoom-to-focus camera, cursor, captions and a Kokoro TTS voice-over (set `KOKORO_PYTHON` and `TTS_SCRIPT`). Needs `ffmpeg`. `npm run demo` records the older preview-only walkthrough `assets/demo.mp4`.
 
 ## Deploy to Jira
 
