@@ -9,7 +9,7 @@
     "preview": "vite --config static/panel/vite.config.mjs --mode harness",
     "test": "node --test --no-warnings test/*.test.js",
     "validate": "node --no-warnings scripts/validate-manifest.mjs",
-    "check": "npm test && npm run validate && npm run build",
+    "check": "npm test && npm run build && npm run validate",
     "demo": "node scripts/record-demo.mjs"
   },
   "dependencies": {

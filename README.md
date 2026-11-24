@@ -37,8 +37,8 @@ Needs Node.js 22 or later.
 ```bash
 npm install
 npm test            # 28 unit tests: dates, Jira parsing, crawl, forecast, conflicts, handlers
-npm run validate    # Forge manifest validation + Forge lint rules, offline
 npm run build       # builds the Custom UI into static/panel/build
+npm run validate    # Forge manifest validation + Forge lint rules, offline (needs the build)
 npm run preview     # local preview at http://localhost:5178
 ```
 
