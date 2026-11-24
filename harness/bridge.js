@@ -54,7 +54,7 @@ async function refreshComments() {
   const mine = comments.filter((c) => c.issueKey === issueKey);
   box.innerHTML = mine.length
     ? mine.map((c) => `<article class="hx-comment"><header>Comment #${esc(c.id)} on ${esc(c.issueKey)}</header>${adfToHtml(c.body)}</article>`).join('')
-    : '<p class="hx-dim">No comments yet. Use “Post this forecast” in the panel.</p>';
+    : '<p class="hx-dim">No comments yet. Use “Post forecast” in the panel.</p>';
 }
 
 function frame() {
@@ -68,7 +68,7 @@ function frame() {
     .hx-title { font: 600 13px/18px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #44546f; margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
     .hx-title img { width: 18px; height: 18px; }
     .hx-dim { color: #626f86; font-size: 13px; }
-    .hx-comment { border-left: 3px solid #0c66e4; padding: 2px 0 2px 12px; margin: 8px 0; font-size: 13px; }
+    .hx-comment { background: #f7f8f9; border-radius: 8px; padding: 10px 14px; margin: 8px 0; font-size: 13px; }
     .hx-comment header { font-size: 11px; color: #626f86; }
     .hx-comment p { margin: 4px 0; } .hx-comment ul { margin: 4px 0; padding-left: 20px; }
     .hx-form { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; font-size: 12px; color: #44546f; }

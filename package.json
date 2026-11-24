@@ -9,7 +9,8 @@
     "preview": "vite --config static/panel/vite.config.mjs --mode harness",
     "test": "node --test --no-warnings test/*.test.js",
     "validate": "node --no-warnings scripts/validate-manifest.mjs",
-    "check": "npm test && npm run validate && npm run build"
+    "check": "npm test && npm run validate && npm run build",
+    "demo": "node scripts/record-demo.mjs"
   },
   "dependencies": {
     "@forge/api": "^8.5.1",
@@ -19,6 +20,7 @@
     "@forge/bridge": "^7.4.0",
     "@forge/lint": "^6.4.1",
     "@forge/manifest": "^13.9.1",
+    "playwright-core": "^1.62.0",
     "vite": "^8.3.8",
     "yaml": "^2.9.1"
   }
