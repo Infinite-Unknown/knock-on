@@ -44,7 +44,7 @@ npm run preview     # local preview at http://localhost:5178
 
 `npm run preview` serves the panel with the real handlers running against an in-memory Jira holding a sample "Checkout 2.0" project. Try `?issue=CHK-12` (the main chain), `?issue=CHK-21`, `?issue=CHK-30` (nothing depends on it), `?issue=CHK-11` (done). The page also has a runner for the two Rovo action / MCP tool functions and shows the comments the in-memory Jira received. Dates are relative to today, so the sample never goes stale.
 
-`npm run demo` (with the preview running) records `assets/demo.mp4`. It needs macOS `say` and `ffmpeg`.
+`npm run demo` (with the preview running) records `assets/demo.mp4`; `node scripts/record-jira-demo.mjs` builds `assets/demo-jira.mp4` from Jira screenshots in `assets/raw/jira/`. Both need macOS `say` and `ffmpeg`.
 
 ## Deploy to Jira
 
@@ -80,7 +80,7 @@ Scopes: `read:jira-work` (read issues and links), `write:jira-work` (post the fo
 
 ## Known limits
 
-- Deployed to the Forge development environment and installed on a Jira Cloud test site: the issue panel loads issues through the Jira API and forecasts correctly there (including Jira's dark theme). Posting the comment, the Rovo agent conversation and the MCP tools have not yet been exercised on the live site; they run the same handler code that the tests and local preview cover.
+- Seen working on a Jira Cloud test site (development build): the issue panel, its forecast on a 6-issue dependency chain, posting the comment, and navigating between issues. The Rovo agent and the MCP tools have not been exercised live (Rovo is not enabled on the test site); they run the same handlers the tests cover.
 - Business days exclude weekends only; public holidays and individual calendars are not considered.
 - Durations come from the original estimate, not remaining estimate or story points; issues with no estimate count as 1 day.
 - An epic's children are reached only when they are downstream of the slipping issue; other children of the same epic are not fetched.
