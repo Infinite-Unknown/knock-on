@@ -1,0 +1,25 @@
+{
+  "name": "knock-on",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Knock-On: forecast what breaks downstream when a Jira issue slips. Forge app with a Jira issue panel, a Rovo agent and MCP tools.",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build --config static/panel/vite.config.mjs",
+    "preview": "vite --config static/panel/vite.config.mjs --mode harness",
+    "test": "node --test --no-warnings test/*.test.js",
+    "validate": "node --no-warnings scripts/validate-manifest.mjs",
+    "check": "npm test && npm run validate && npm run build"
+  },
+  "dependencies": {
+    "@forge/api": "^8.5.1",
+    "@forge/resolver": "^2.0.2"
+  },
+  "devDependencies": {
+    "@forge/bridge": "^7.4.0",
+    "@forge/lint": "^6.4.1",
+    "@forge/manifest": "^13.9.1",
+    "vite": "^8.3.8",
+    "yaml": "^2.9.1"
+  }
+}
