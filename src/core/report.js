@@ -10,6 +10,9 @@ export function headline(result) {
   if (result.rootDone) return `${root.key} is already done, so a slip cannot affect anything downstream.`;
   if (counts.downstream === 0) return `Nothing in Jira depends on ${root.key}, so a ${bd(slipDays)} slip stays contained.`;
   const broken = counts.late + counts.later;
+  if (broken === 0 && counts.releasesAtRisk === 0) {
+    return `If ${root.key} slips ${bd(slipDays)}, ${counts.downstream === 1 ? 'the one downstream issue still makes its' : `all ${counts.downstream} downstream issues still make their`} due date${counts.downstream === 1 ? '' : 's'}.`;
+  }
   const parts = [`If ${root.key} slips ${bd(slipDays)}, ${broken} of ${plural(counts.downstream, 'downstream issue')} ${broken === 1 ? 'misses its' : 'miss their'} due date`];
   if (counts.releasesAtRisk > 0) parts.push(`${plural(counts.releasesAtRisk, 'release')} ${counts.releasesAtRisk === 1 ? 'is' : 'are'} at risk`);
   return `${parts.join(' and ')}.`;

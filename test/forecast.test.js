@@ -5,6 +5,7 @@ import { sampleProject } from '../harness/sample-project.js';
 import { crawlDownstream } from '../src/jira/crawl.js';
 import { forecast } from '../src/core/forecast.js';
 import { addBusinessDays } from '../src/core/dates.js';
+import { headline } from '../src/core/report.js';
 
 const TODAY = '2026-11-24'; // a Tuesday
 const d = (n) => addBusinessDays(TODAY, n);
@@ -28,6 +29,7 @@ test('slip of 0 is the plan as it stands: nothing breaks', async () => {
   assert.equal(r.counts.late, 0);
   assert.equal(r.counts.releasesAtRisk, 0);
   assert.equal(r.counts.downstream, 7);
+  assert.match(headline(r), /all 7 downstream issues still make their due dates/);
 });
 
 test('slip of 3 business days breaks the chain and the release', async () => {
@@ -46,6 +48,8 @@ test('slip of 3 business days breaks the chain and the release', async () => {
   // CHK-22 waits for CHK-27 (not downstream) anyway, so the slip is absorbed.
   assert.equal(n['CHK-22'].state, 'absorbed');
   assert.equal(n['CHK-22'].slackDays, 1);
+  assert.equal(n['CHK-22'].slackAfterDays, 1); // CHK-27 still drives it
+  assert.equal(n['CHK-10'].slackAfterDays, 1);
   assert.deepEqual(r.externalBlockers.map((b) => b.key), ['CHK-27']);
 
   // Epic finishes when its children do; still inside its due date.

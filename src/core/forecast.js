@@ -220,6 +220,7 @@ export function forecast(graph, slipDays, { today = todayIso(), defaultDuration 
       baselineDelayDays: lateness(v.due, baselineFinish),
       delayDays: lateness(v.due, projectedFinish),
       slackDays: key !== rootKey && v.due && earliestBase ? businessDaysBetween(earliestBase, v.due) : null,
+      slackAfterDays: key !== rootKey && v.due && after.earliest.get(key) ? businessDaysBetween(after.earliest.get(key), v.due) : null,
       depth: depth.get(key) ?? 0,
       via: (inEdges.get(key) ?? []).map((e) => ({ key: e.from, type: e.type })),
       fixVersions: v.fixVersions,
