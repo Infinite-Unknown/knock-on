@@ -6,7 +6,6 @@ modules:
         function: panel-resolver
       title: Knock-On
       icon: resource:panel;icon.svg
-      viewportSize: large
 
   rovo:agent:
     - key: knock-on-agent

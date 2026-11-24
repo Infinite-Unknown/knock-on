@@ -80,13 +80,12 @@ Scopes: `read:jira-work` (read issues and links), `write:jira-work` (post the fo
 
 ## Known limits
 
-- Not yet run on a real Jira site: the Forge CLI could not run on the build machine's Node version, so deploy, install, the Rovo agent and the MCP tools have only been exercised through the same handler code in tests and the local preview.
+- Deployed to the Forge development environment and installed on a Jira Cloud test site: the issue panel loads issues through the Jira API and forecasts correctly there (including Jira's dark theme). Posting the comment, the Rovo agent conversation and the MCP tools have not yet been exercised on the live site; they run the same handler code that the tests and local preview cover.
 - Business days exclude weekends only; public holidays and individual calendars are not considered.
 - Durations come from the original estimate, not remaining estimate or story points; issues with no estimate count as 1 day.
 - An epic's children are reached only when they are downstream of the slipping issue; other children of the same epic are not fetched.
 - Start dates and Jira Plans data are not used.
 - Crawl limit: 80 downstream issues plus 50 outside blockers per forecast.
-- Dark mode depends on Jira's design tokens and has not been checked in Jira.
 
 ## Licence
 
