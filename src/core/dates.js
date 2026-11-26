@@ -64,6 +64,6 @@ export function maxDate(...dates) {
 }
 
 export function formatShort(date) {
-  if (!isIsoDate(date)) return '—';
+  if (!isIsoDate(date)) return '-';
   return new Date(toUtc(date)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 }

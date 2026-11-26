@@ -14,7 +14,7 @@ test('Rovo action: forecast-slip-impact returns a readable summary', async () =>
   const { h } = setup();
   const text = await h.forecastSlipImpact({ issueKey: 'CHK-12', slipDays: 3 });
   assert.match(text, /^If CHK-12 slips 3 business days, 4 of 7 downstream issues miss their due date and 1 release is at risk\./);
-  assert.match(text, /CHK-24 Beta rollout to 5% of traffic — due Dec 11, now Dec 15: \+2 business days \[Dev Patel\]/);
+  assert.match(text, /CHK-24 Beta rollout to 5% of traffic - due Dec 11, now Dec 15: \+2 business days \[Dev Patel\]/);
   assert.match(text, /Checkout 2.0 \(release Dec 14\): last issue lands Dec 15, \+1 business day; driven by CHK-24/);
   assert.match(text, /Absorbed by slack: CHK-22, CHK-10\./);
   assert.match(text, /OPS-7 \(moves 2 days\)/);

@@ -31,7 +31,7 @@ export function summaryText(result) {
     for (const n of hit) {
       const who = n.assignee?.name ?? 'Unassigned';
       const extra = n.state === 'later' ? ` (already ${n.baselineDelayDays} late, now ${n.delayDays})` : '';
-      lines.push(`- ${n.key} ${n.summary} — due ${formatShort(n.due)}, now ${formatShort(n.projectedFinish)}: +${bd(n.delayDays)}${extra} [${who}]`);
+      lines.push(`- ${n.key} ${n.summary} - due ${formatShort(n.due)}, now ${formatShort(n.projectedFinish)}: +${bd(n.delayDays)}${extra} [${who}]`);
     }
   }
   const risky = releases.filter((r) => r.overrunDays > 0);
@@ -87,7 +87,7 @@ export function toAdf(result) {
         bullets(
           hit.map((n) => [
             text(n.key, strong),
-            text(` ${n.summary} — due ${formatShort(n.due)}, now ${formatShort(n.projectedFinish)} (+${bd(n.delayDays)}), ${n.assignee?.name ?? 'Unassigned'}`),
+            text(` ${n.summary} - due ${formatShort(n.due)}, now ${formatShort(n.projectedFinish)} (+${bd(n.delayDays)}), ${n.assignee?.name ?? 'Unassigned'}`),
           ]),
         ),
       );
@@ -96,7 +96,7 @@ export function toAdf(result) {
     if (risky.length) {
       content.push(para(text('Releases at risk', strong)));
       content.push(
-        bullets(risky.map((r) => [text(r.name, strong), text(` — release ${formatShort(r.releaseDate)}, last issue lands ${formatShort(r.projectedFinish)} (+${bd(r.overrunDays)})`)])),
+        bullets(risky.map((r) => [text(r.name, strong), text(` - release ${formatShort(r.releaseDate)}, last issue lands ${formatShort(r.projectedFinish)} (+${bd(r.overrunDays)})`)])),
       );
     }
     const absorbed = result.nodes.filter((n) => n.state === 'absorbed').map((n) => n.key);
